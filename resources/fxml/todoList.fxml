@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="860.0" maxWidth="990.0" prefHeight="860.0" prefWidth="990.0" style="-fx-background-color: rgb(255, 252, 242);" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox fx:id="listBox" prefHeight="166.0" prefWidth="970.0">
+         <children>
+            <Label fx:id="listName" alignment="TOP_LEFT" prefHeight="96.0" prefWidth="900.0" text="TITOLAZZO">
+               <padding>
+                  <Insets left="20.0" top="15.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox maxWidth="977.0" minHeight="65.0" prefHeight="70.0" prefWidth="977.0" styleClass="task" stylesheets="@../style.css">
+               <children>
+                  <CheckBox maxHeight="70.0" maxWidth="900.0" minHeight="45.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="900.0" text="CheckBox">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </CheckBox>
+                  <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="400.0" prefHeight="70.0" prefWidth="400.0" text="12/01">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
