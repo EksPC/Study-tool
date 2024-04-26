@@ -1,35 +1,50 @@
-package main.tools;
+package main.java.tools;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 /**This class represents the model of a task.*/
-@XmlRootElement 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Task {
 	
-	private LocalDate expiration;
+	private String expiration;
 	private String name;
 	private boolean completed;
+	
+//	public Task(String expiration, String name, boolean completed) {
+//		this.expiration = expiration;
+//		this.name = name;
+//		this.completed = completed;
+//	}
+//	
 	
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	
+	public String getExpiration() { 
+		return expiration;
 	}
+	
 	public boolean isCompleted() {
 		return completed;
 	}
+	
+	public void setExpiration(String expiration) {
+		this.expiration = expiration;
+	}
+	
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
-	public LocalDate getExpiration() {
-		return expiration;
-	}
-	public void setExpiration(LocalDate expiration) {
-		this.expiration = expiration;
-	}
+	
+
 	
 	
 	
