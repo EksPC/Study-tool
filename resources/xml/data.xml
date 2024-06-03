@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <tasksStorage>
-    <lists>
-        <id>STUDIO</id>
-    </lists>
+    <todoLists>
+        <entry>
+            <key>STUDIO</key>
+            <value>
+                <id>STUDIO</id>
+            </value>
+        </entry>
+    </todoLists>
+    <calendarDates/>
 </tasksStorage>

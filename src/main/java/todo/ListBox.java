@@ -4,33 +4,30 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import main.java.StorageManager;
+import main.java.model.TaskList;
 
 public class ListBox {
 
-	private String listId;
+	private TaskList list;
 	private ListContainerView container;
 	
-	public ListBox(String listId, ListContainerView container) {
+	public ListBox(TaskList list, ListContainerView container) {
 		this.container = container;
-		this.listId = listId;
+		this.list = list;
 	}
 
 	public HBox getListBox() {
 		
 		HBox taskBox = new HBox();
-		Label taskName = new Label(listId);
+		Label taskName = new Label(list.getId());
 		Button deleteButton = new Button("D");
 		
 		deleteButton.setVisible(false);
 	
 		deleteButton.setOnMouseClicked(event -> {
 			
-			int index = StorageManager.deleteList(listId);
-			if(index < 0) {
-				System.err.println("LIST BOX ~ DELETE BUTTON: INDEX ERROR");
-				return;
-			}
-			container.removeList(index);
+			StorageManager.deleteList(list);
+			container.removeList(list);
 		});
 		
 		taskBox.getStyleClass().add("list-button");

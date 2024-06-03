@@ -13,7 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import main.java.MainController;
-import main.java.tools.SessionController;
+import main.java.model.SessionController;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 

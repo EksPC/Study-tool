@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
-import main.java.tools.SessionController;
+import main.java.model.SessionController;
 
 
 

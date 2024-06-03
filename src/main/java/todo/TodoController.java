@@ -7,8 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import main.java.MainController;
 import main.java.StorageManager;
-import main.java.tools.TaskList;
-import main.java.tools.TasksStorage;
+import main.java.model.TaskList;
+import main.java.model.TasksStorage;
 
 public class TodoController {
 	
@@ -34,6 +34,8 @@ public class TodoController {
 		containerLoader.setController(containerView);
 		
 		HBox tmpBox = buildContainer();	
+		
+		containerView.setActiveTaskList(0);
 		
 		try {
 			tmpBox.getChildren().add(containerLoader.load());
@@ -63,6 +65,10 @@ public class TodoController {
 		listView.displayTaskList(list);
 	}
 	
+	
+	public void removeTask(TaskList list) {
+		listView.clearTasks(list);
+	}
 //	
 //	private void addTaskList() {
 //		storage.getLists().add(new TaskList());

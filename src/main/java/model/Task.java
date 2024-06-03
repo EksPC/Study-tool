@@ -1,15 +1,19 @@
-package main.java.tools;
+package main.java.model;
+
+import java.io.Serializable;
+import java.sql.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 /**This class represents the model of a task.*/
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Task {
+//@XmlAccessorType(XmlAccessType.FIELD)
+public class Task implements Serializable{
 	
-	private String expiration;
+	private String expiration = "";
 	private String name;
 	private boolean completed;
+	private String listName;
 	
 	/**Complete constructor.
 	 * @param name
@@ -18,9 +22,14 @@ public class Task {
 	public Task(String name/*,String expiration, boolean completed*/) {
 //		this.expiration = expiration;
 		this.name = name;
+
 //		this.completed = completed;
 	}
 
+	public String getListName() {
+		return listName;
+	}
+	
 	/**Dummy constructor.*/
 	public Task() {
 	}

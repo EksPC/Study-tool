@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tasksStorage>
+    <todoLists>
+        <entry>
+            <key>lista</key>
+            <value>
+                <id>lista</id>
+                <task>
+                    <completed>false</completed>
+                    <expiration></expiration>
+                    <name>cose da fare</name>
+                </task>
+            </value>
+        </entry>
+        <entry>
+            <key>altra lista</key>
+            <value>
+                <id>altra lista</id>
+                <task>
+                    <completed>false</completed>
+                    <expiration></expiration>
+                    <name>altre cose da fare</name>
+                </task>
+            </value>
+        </entry>
+    </todoLists>
+    <calendarDates/>
+</tasksStorage>

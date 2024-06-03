@@ -1,4 +1,4 @@
-package main.java.tools;
+package main.java.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

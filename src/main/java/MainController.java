@@ -6,6 +6,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import main.java.focus.FocusController;
+import main.java.model.Session;
+import main.java.model.Task;
+import main.java.model.TaskList;
+import main.java.model.TasksStorage;
 import main.java.calendar.CalendarController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +20,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.converter.LocalDateStringConverter;
 import main.java.todo.TodoController;
-import main.java.tools.TasksStorage;
-import main.java.tools.Session;
-import main.java.tools.Task;
-import main.java.tools.TaskList;
 
 /**This class is the brain of the application.
  * 
@@ -41,7 +41,7 @@ public class MainController {
 	
 	
 	public MainController() {
-		StorageManager.readTasks();
+		StorageManager.initialise();
 		focusController = new FocusController(this);
 		todoController = new TodoController(this);
 		calendarController = new CalendarController();
@@ -102,6 +102,7 @@ public class MainController {
 
 		case 3:
 			if(pageNumber != 3) {
+				root.setCenter(calendarController.getUserInterface());
 				pageNumber = 3;
 				System.out.println("Pg: " + pageNumber);
 //				root.setCenter(CalendarController.getUserInterface());

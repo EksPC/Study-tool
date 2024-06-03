@@ -22,9 +22,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import main.java.MainController;
 import main.java.StorageManager;
-import main.java.tools.Task;
-import main.java.tools.TaskList;
-import main.java.tools.TodoList;
+import main.java.model.Task;
+import main.java.model.TaskList;
+import main.java.model.TodoList;
 
 public class ListView implements Initializable{
 
@@ -36,25 +36,25 @@ public class ListView implements Initializable{
 	
 	private String mainPromptText = "type in a task";
 	private String noNamePromptText = "please type in a task";
+
 	
-	private TaskList list;
 	private TodoController controller;
+	private TaskList currentList;
 	
 	public ListView(TodoController controller) {
 		this.controller = controller;
 		if(StorageManager.isStorageEmpty()) {
-			this.list = new TaskList();
+			this.currentList = new TaskList();
+			return;
 		}
-		else {
-			this.list = StorageManager.getTaskLists().get(0);
-		}
+		this.currentList = StorageManager.getTaskLists().get(0);
 		
 	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		displayTaskList(list);
+		displayTaskList(currentList);
 		
 	}
 	
@@ -88,9 +88,9 @@ public class ListView implements Initializable{
 			return;
 		} 
 		
-		System.out.println("Adding new Task: " + newTaskName);
+		System.out.println("Adding new Task: " + newTaskName + " to "+currentList.getId());
 		listBox.getChildren().add(buildTask(new Task(newTaskName)));
-		StorageManager.addTaskToList(list.getId(),new Task(newTaskName));
+		StorageManager.addTaskToList(currentList.getId(),new Task(newTaskName));
 		
 		
 		nameField.setPromptText(mainPromptText);
@@ -102,9 +102,14 @@ public class ListView implements Initializable{
 	}
 	
 	public void displayTaskList(TaskList list) {
-		this.list = list;
+		
+		currentList = list;
 		listName.setText(list.getId());
-		clearTasks();
+		
+		System.out.println("TaskView: List displayed = " + list.getId());
+		
+		listName.setText(list.getId());
+		clearTasks(list);
 		
 		if(list.isEmpty()) {
 			return;
@@ -116,7 +121,7 @@ public class ListView implements Initializable{
 	}
 	
 	
-	private void clearTasks() {
+	public void clearTasks(TaskList list) {
 		while(!listBox.getChildren().isEmpty()) {
 			listBox.getChildren().removeLast();
 		}

@@ -1,10 +1,11 @@
-package main.java.tools;
+package main.java.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javafx.scene.paint.Color;
 
-public class TodoList {
+public class TodoList implements Serializable{
 
 	private Color color;
 	private String name;

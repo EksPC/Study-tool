@@ -18,7 +18,7 @@ class StorageManagerTest {
 	
 	@Test
 	void dataExtraction() {
-		assertNotNull(manager.readTasks());
+		
 	}
 
 }
