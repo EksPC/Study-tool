@@ -1,29 +1,32 @@
 package main.java.model;
 
-import java.io.Serializable;
 import java.sql.Date;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import java.time.LocalDate;
+import javax.xml.bind.annotation.*;
 
 /**This class represents the model of a task.*/
-//@XmlAccessorType(XmlAccessType.FIELD)
-public class Task implements Serializable{
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Task{
 	
-	private String expiration = "";
+	private String expiration;
 	private String name;
-	private boolean completed;
 	private String listName;
+	private boolean completed;
 	
 	/**Complete constructor.
 	 * @param name
 	 * @param expiration Date in string format
 	 * @param completed flag for completion*/
-	public Task(String name/*,String expiration, boolean completed*/) {
-//		this.expiration = expiration;
+	public Task(String name,String expiration/*, boolean completed*/) {
+		this.expiration = expiration;
 		this.name = name;
 
 //		this.completed = completed;
+	}
+	
+	public Task(String name) {
+		this.name = name;
+		this.expiration = Date.valueOf(LocalDate.MIN).toString();
 	}
 
 	public String getListName() {

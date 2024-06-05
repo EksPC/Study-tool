@@ -1,6 +1,6 @@
 BUG LIST:
 
-When you delete a list it doesn't remove it's tasks
+When you delete a list it doesn't remove it's tasks - SOLVED
 When you create a and then you add tasks it doesn't display them - SOLVED
 If the storage is empty there's a break - SOLVED
 

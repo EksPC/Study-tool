@@ -34,9 +34,7 @@ public class TodoController {
 		containerLoader.setController(containerView);
 		
 		HBox tmpBox = buildContainer();	
-		
-		containerView.setActiveTaskList(0);
-		
+				
 		try {
 			tmpBox.getChildren().add(containerLoader.load());
 			tmpBox.getChildren().add(listLoader.load());
@@ -67,13 +65,15 @@ public class TodoController {
 	
 	
 	public void removeTask(TaskList list) {
-		listView.clearTasks(list);
+		if(listView.getCurrentList().getId().equals(list.getId())) {
+			listView.clearTasks();
+			listView.displayTodayList();
+		}
 	}
 //	
 //	private void addTaskList() {
 //		storage.getLists().add(new TaskList());
 //		manager.writeTasks(storage);
 //	}
-//	
 }
 

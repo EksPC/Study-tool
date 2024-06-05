@@ -29,7 +29,7 @@
          <children>
             <Button fx:id="newTaskButton" mnemonicParsing="false" onAction="#addTask" prefHeight="35.0" prefWidth="65.0" text="Add" />
             <TextField fx:id="nameField" prefHeight="35.0" prefWidth="750.0" promptText="type a task" />
-            <DatePicker fx:id="dateField" prefHeight="35.0" prefWidth="121.0" />
+            <DatePicker fx:id="dateField" editable="false" prefHeight="35.0" prefWidth="121.0" />
          </children>
          <padding>
             <Insets left="15.0" />

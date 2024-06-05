@@ -18,6 +18,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 
+
+/* TODO Multi-threading functionalities
+ * TODO Sound alerting
+ * TODO Settings display --> just for session length
+ * 
+ * */
+
 /**This class is responsible for handling events of the focus section, or 
  * the application's left side, for example starting a session or modifying its settings.*/
 public class FocusController {

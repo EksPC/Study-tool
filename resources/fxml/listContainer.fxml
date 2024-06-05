@@ -24,7 +24,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </ImageView>
-            <Label fx:id="todayButton" prefHeight="65.0" prefWidth="365.0" text="TODAY" textFill="#fffcf2">
+            <Label fx:id="todayButton" prefHeight="65.0" prefWidth="365.0" text="Today" textFill="#fffcf2">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>

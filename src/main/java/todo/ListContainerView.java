@@ -34,6 +34,7 @@ public class ListContainerView implements Initializable {
 	private HBox displayedListBox;
 	private TaskList activeTaskList;
 	private HBox pointedBox;
+	private boolean todayListFlag;
 	
 	@FXML private HBox todayList;
 	@FXML private VBox listContainer;
@@ -51,22 +52,16 @@ public class ListContainerView implements Initializable {
 	
 	public void setPointedBox(HBox pointedBox) {
 		this.pointedBox = pointedBox;
-	}
+	} 
 	
-	public void setActiveTaskList(int index) {
-		if(StorageManager.isStorageEmpty()) {
-			this.activeTaskList = new TaskList();
-			return;
-		}
-		this.activeTaskList = StorageManager.getTaskLists().get(0);
-		System.out.println("CONTAINER VIEW: Task list 0 added");
-	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		activeTaskList = StorageManager.getTodayTaskList();
+		todayListFlag = true;
+		
 		for(int i = 0; i<StorageManager.getTaskLists().size(); i++) {
-			
 			TaskList list = StorageManager.getTaskLists().get(i);
 			displayTaskList(list);	
 		}
@@ -75,12 +70,20 @@ public class ListContainerView implements Initializable {
 
 	
 	/**This method creates the view of a task list.*/
-	private HBox displayTaskList(TaskList list) {
+	private void displayTaskList(TaskList list) {
 		
 		ListBox newTaskBox = new ListBox(list, this);
 		HBox listBox = newTaskBox.getListBox();
 		
+		if(list.equals(StorageManager.getTodayTaskList())) {
+			return;
+		}
+		
 		listBox.setOnMouseClicked(event -> {
+			
+			if(activeTaskList.equals(list)) {
+				return;
+			}
 			
 			displayedListBox.setStyle("-fx-background-color: rgb(134, 129, 121);");
 			listBox.setStyle("-fx-background-color: rgb(51, 49, 46);");
@@ -94,7 +97,15 @@ public class ListContainerView implements Initializable {
 		});
 		
 		listContainer.getChildren().add(listBox);
-		return listBox;
+	}
+	
+	@FXML
+	private void displayTodayList() {
+		
+		displayedListBox.setStyle("-fx-background-color: default;");
+		todayList.setStyle("-fx-background-color: rgb(51, 49, 46);");
+		displayTaskList(StorageManager.getTodayTaskList());
+		
 	}
 	
 	
@@ -107,8 +118,9 @@ public class ListContainerView implements Initializable {
 		if(StorageManager.doesListExist(newListName)) {
 			listNameField.setPromptText(FieldMessages.nameTakenText);
 			return;
-		} else if(newListName.equals("")) {
+		} else if(newListName.isBlank()) {
 			listNameField.setPromptText(FieldMessages.noIdPromptText);
+			return;
 		}
 		
 		TaskList newList = new TaskList(newListName);
@@ -183,16 +195,7 @@ public class ListContainerView implements Initializable {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	

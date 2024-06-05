@@ -13,11 +13,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TasksStorage{
 
 	private HashMap<String,TaskList> todoLists;
-	private HashMap<String,ArrayList<Task>> calendarDates;
+	private HashMap<String,TaskList> calendarDates;
 	
 	public TasksStorage() {
 		todoLists = new HashMap<String, TaskList>();
-		calendarDates = new HashMap<String, ArrayList<Task>>();
+		calendarDates = new HashMap<String, TaskList>();
 		
 	}
 	
@@ -25,7 +25,7 @@ public class TasksStorage{
 		this.todoLists = todoLists;
 	}
 	
-	public void setCalendarDates(HashMap<String,ArrayList<Task>> calendarDates) {
+	public void setCalendarDates(HashMap<String,TaskList> calendarDates) {
 		this.calendarDates = calendarDates;
 	}
 	
@@ -34,8 +34,12 @@ public class TasksStorage{
 	}
 	
 	
-	public HashMap<String,ArrayList<Task>> getCalendarDates(){
+	public HashMap<String,TaskList> getCalendarDates(){
 		return calendarDates;
+	}
+	
+	public void addTaskToList(String listName, Task task) {
+		
 	}
 
 }

@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StringWriter;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Set;
@@ -59,13 +60,11 @@ public class StorageManager {
 	/**This method returns an array list containing the task expiring on a certain date.
 	 * If no task expires on the specified date, an empty ArrayList is returned.
 	 * @param date The date*/
- 	public static ArrayList<Task> getTaskByDate(Date date) {
+ 	public static TaskList dateTaskList(Date date) {
 		if(storage.getCalendarDates().containsKey(date)) {
-			return storage.getCalendarDates().get(date);
-		} else {
-			return new ArrayList<Task>();
-			
-		}
+			return new TaskList(storage.getCalendarDates());
+		} 
+		return new TaskList();
 	}
 	
 	
@@ -83,14 +82,19 @@ public class StorageManager {
 		} else {
 			storage.getCalendarDates().get(date).add(task);
 		}
-		
-		storage.getTodoLists().get(task.getListName()).getTasks().add(task);
-		saveTasks();
 	}
 	
 	
 	public static TaskList getTaskListByName(String name) {
 		return storage.getTodoLists().get(name);
+	}
+	
+	public static TaskList getTodayTaskList() {
+		
+		TaskList today = new TaskList();
+		today.setTasks(getTaskByDate(Date.valueOf(LocalDate.now())));
+		today.setId("Today");
+		return today;
 	}
 	
 	
@@ -112,6 +116,17 @@ public class StorageManager {
 		storage.getTodoLists().get(listName).getTasks().add(task);
 		saveTasks();
 		System.out.println("Adding " + task.getName() + " to " + listName);
+		
+		if(! (task.getExpiration() == null)) {
+			System.out.println("Expiration on " + task.getExpiration().toString());
+			addTaskOnDate(task, task.getExpiration());
+		}
+		
+		if(!task.getExpiration().equals(Date.valueOf(LocalDate.MIN).toString())) {
+			addTaskOnDate(task, task.getExpiration());
+		}
+		addTaskOnDate(task, listName);
+		saveTasks();
 	}
 	
 	
@@ -160,7 +175,7 @@ public class StorageManager {
 	public static void deleteList(TaskList list) {
 		System.out.println("Deleting list: " + list);
 		for(Task task: storage.getTodoLists().get(list.getId()).getTasks()) {
-			if(!task.getExpiration().isBlank()) {
+			if(!task.getExpiration().equals(null)) {
 				storage.getCalendarDates().get(task.getExpiration()).remove(task);
 			}
 			
