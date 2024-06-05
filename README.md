@@ -12,7 +12,10 @@ To-Do List: Create and manage tasks with the to-do list feature, ensuring that i
 JavaFX: Study Tool is developed using JavaFX for the graphical user interface, providing a modern and interactive user experience.
 JUnit: JUnit is used for unit testing to ensure the reliability and correctness of the application's codebase.
 JAXB: JAXB is used for XML data binding, allowing for the serialization and deserialization of data objects to and from XML format.
-Study Tool, you will be presented with the main dashboard containing the focus clock, calendar, and to-do list. Use the navigation menu to switch between different features and customize your study sessions according to your preferences.
+
+### Usage
+Opening Study Tool, you will be presented with the main dashboard containing the focus clock. Use the navigation menu, situated to the left, to switch between different features and customize your study sessions according to your preferences.
+In the todo-list section you can visualize both your lists with their tasks, but also a special list called **Today** where you can check for incoming expiration.
 
 ### Contributing
 Contributions to Study Tool are welcome! If you would like to contribute to the project, please fork the repository, make your changes, and submit a pull request.
